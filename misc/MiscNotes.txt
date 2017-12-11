@@ -1,0 +1,59 @@
+Git notes
+=========
+
+Check out remote branch from a repo:
+
+>git branch
+* master
+
+>git pull origin master
+From https://github.com/plartoo/coding-interview-university
+ * branch            master     -> FETCH_HEAD
+Already up-to-date.
+
+>git branch -f progress origin/progress
+Branch progress set up to track remote branch progress from origin.
+
+>git branch
+* master
+  progress
+
+>git checkout progress
+Switched to branch 'progress'
+Your branch is up-to-date with 'origin/progress'.
+
+Push changes in local branch to remote branch 
+>> git push -u origin <remote_branch_name>
+
+Delete remote branch
+>git push origin --delete progress
+To https://github.com/plartoo/coding-interview-university.git
+ - [deleted]         progress
+ 
+ 
+Sync the fork up to date
+1. Add remote from original repo in your forked repo
+>git remote add upstream https://github.com/jwasham/coding-interview-university.git
+>git fetch upstream
+2. Update your fork from original repo to keep up with their changes:
+>git pull upstream master
+3. Check your git remote situation and it should be something like this:
+C:\Users\lacheephyo\Desktop\coding-interview-university>git remote -v
+jwasham https://github.com/jwasham/coding-interview-university (fetch)
+jwasham https://github.com/jwasham/coding-interview-university (push)
+origin  https://github.com/plartoo/coding-interview-university.git (fetch)
+origin  https://github.com/plartoo/coding-interview-university.git (push)
+upstream        https://github.com/jwasham/coding-interview-university.git (fetch)
+upstream        https://github.com/jwasham/coding-interview-university.git (push)
+In the above, the 'origin' is the link to your forked repo. Make sure it's right. Then do #4 below.
+4. Send the just downloaded updates to your git repo
+> git push origin master
+
+ 
+If things get too messy and we need to delete a local branch
+(soft)
+>git branch -d progress
+ 
+(force)
+>git branch -D progress
+Deleted branch progress (was f5f5b31).
